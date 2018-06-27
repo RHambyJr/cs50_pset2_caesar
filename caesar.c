@@ -1,8 +1,15 @@
+/*
+ * Robert Hamby
+ * Caesarian Shift encryption exercise
+ * CS50 - PSet2 - caesar
+ * Program takes a command line argument int, to shift message that number of letters
+ * Takes user input once program has started, and outputs encrypted text
+ * Case sensative, and ignores punctuations (or letters that's not in the english alphabet, really...)
+ */
 #include <stdio.h>
 #include <cs50.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdlib.h>
 
 void shiftText(string text, int shift);
 char caesarianShift(char letter, int shift);
@@ -27,8 +34,12 @@ int main(int argc, string argv[])
     printf("\n");
 }
 
-// Shifts argument string by int shift amount, per Caesar shift
-// Returns shifted string
+/*
+ * Takes a string of text and an int to shift, and prints out shifted (encrypted) text
+ * Arguments: string for text to be encrypted
+ *            int for number of places a letter should shift
+ * Returns: nothing
+ */
 void shiftText(string text, int shift)
 {
     //holds current element in string
@@ -47,12 +58,16 @@ void shiftText(string text, int shift)
     }
 }
 
-// Uses the equation cᵢ = (pᵢ + k) % 26
-// cᵢ is the cypher text, pᵢ is the plaintext, and k is the shift amount
-// Arguments: char for letter to be shifted
-//            int for number of places to shift
-//            bool for whether letter is capital or not
-// Returns: caesarian shifted letter
+/*
+ * Uses the equation cᵢ = (pᵢ + k) % 26
+ * cᵢ is the cypher text, pᵢ is the plaintext, and k is the shift amount
+ * Takes a letter and converts it to alpha key (a = 0, z = 26).
+ * Performs caesarian shift equation, then converts back to ascii
+ * Arguments: char for letter to be shifted
+ *            int for number of places to shift
+ *            bool for whether letter is capital or not
+ * Returns: char caesarian shifted letter
+ */
 char caesarianShift(char letter, int shift)
 {
     const int UPPER_A = (int)'A';
